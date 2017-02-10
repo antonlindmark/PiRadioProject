@@ -10,10 +10,10 @@ import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
 
 public class TFTPServer {
-    public static final int TFTPPORT = 4970;
-    public static final int BUFSIZE = 516;
-    public static final String READDIR = "C:/Index/Read/";
-    public static final String WRITEDIR = "C:/Index/Write/";
+    public static final int TFTPPORT = 80;
+    public static final int BUFSIZE = 28;
+    public static final String READDIR = "C:/Github/Index/Read/";
+    public static final String WRITEDIR = "C:/Github/Index/Write/";
     public static final int OP_RRQ = 1;
     public static final int OP_WRQ = 2;
     public static final int OP_DAT = 3;

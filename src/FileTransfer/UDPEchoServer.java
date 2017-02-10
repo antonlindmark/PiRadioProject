@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 
 public class UDPEchoServer {
     public static final int BUFSIZE = 1024;
-    public static final int MYPORT = 4950;
+    public static final int MYPORT = 80;
 
     public static void main(String[] args) throws IOException {
         System.out.printf("Server has started");
@@ -25,6 +25,8 @@ public class UDPEchoServer {
 
             /* Receiving message */
             socket.receive(receivePacket);
+            String receivedString = new String(receivePacket.getData(), receivePacket.getOffset(), receivePacket.getLength());
+            System.out.println(receivedString);
 
             /* Create datagram packet for sending message */
             DatagramPacket sendPacket =

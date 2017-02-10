@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 public class UDPEchoClient {
 
-    public static final String MSG = "An Echo Message!";
+    public static final String MSG = "Negerkuk!";
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
