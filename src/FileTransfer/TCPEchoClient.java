@@ -10,6 +10,7 @@ public class TCPEchoClient {
     public static final String MSG = "An Echo Message!";
 
     public static void main(String[] args) throws IOException, InterruptedException {
+
         int MYPORT = Integer.parseInt(args[1]);
         int messages = Integer.parseInt(args[3]);
         byte[] buf = new byte[Integer.parseInt(args[2])];
