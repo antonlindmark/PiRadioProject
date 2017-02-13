@@ -11,7 +11,7 @@ public class TCPEchoServer {
     public static void main(String[] args) throws IOException {
         System.out.printf("Server has started \n");
 
-        myServerSocket = new ServerSocket(4970);
+        myServerSocket = new ServerSocket(4950);
 
         while (true) {
 
