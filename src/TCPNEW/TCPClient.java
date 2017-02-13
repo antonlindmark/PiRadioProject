@@ -23,6 +23,11 @@ public class TCPClient {
             while ((x= file.read())!=-1){
                 d.write(x);
             }
+            d.write(106);
+            d.write(112);
+            d.write(103);
+            // Maybe but ugly solution, there is problably format in the header
+
             d.close();
             s.close();
         } catch (IOException e) {

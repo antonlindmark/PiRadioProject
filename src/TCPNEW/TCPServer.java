@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URLConnection;
 
 /**
  * Created by user on 2017-02-13.
@@ -36,8 +37,7 @@ class newClientThread extends Thread {
 
         try {
             d = new DataInputStream(connection.getInputStream());
-
-            f = new FileOutputStream("newFile");
+            f = new FileOutputStream("newFile.jpg");
             client = connection;
             this.start();
         } catch (IOException e) {
