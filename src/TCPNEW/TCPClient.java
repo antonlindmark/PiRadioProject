@@ -11,29 +11,25 @@ public class TCPClient {
     public static void main(String args[]){
         FileInputStream file=null;
         int x;
+        String filepath = "C:\\Users\\user\\Pictures\\cryptimage.png";
+
         try {
-            file = new FileInputStream("C:\\Users\\user\\Desktop\\slott.jpg");
+            file = new FileInputStream(filepath);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         try {
-            Socket s = new Socket("localhost",4950);
+            Socket s = new Socket("194.47.120.64",7778);
             DataOutputStream d = new DataOutputStream(s.getOutputStream());
+            d.write(filepath.getBytes());
+            d.write((char)42);
             while ((x= file.read())!=-1){
                 d.write(x);
             }
-            d.write(106);
-            d.write(112);
-            d.write(103);
-            // Maybe but ugly solution, there is problably format in the header
-
             d.close();
             s.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }
