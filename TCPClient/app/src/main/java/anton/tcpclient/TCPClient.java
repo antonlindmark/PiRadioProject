@@ -1,16 +1,15 @@
 package anton.tcpclient;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 
-import java.io.BufferedInputStream;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -20,46 +19,39 @@ import java.net.UnknownHostException;
 
 public class TCPClient extends AsyncTask{
 
-    public static final String SERVER_IP = "192.168.43.27"; //server IP address
-    public static final int SERVER_PORT = 5000;
+    public static final String SERVER_IP = "192.168.0.103"; //server IP address
+    public static final int SERVER_PORT = 4444;
 
 
     public void runTcpClient() {
         try {
             Socket s = new Socket(SERVER_IP, SERVER_PORT);
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
-            //send output msg
-            //String outMsg = "TCP connecting to " + SERVER_PORT + System.getProperty("line.separator");
 
-            String filepath = "C:\\Users\\user\\Pictures\\cryptimage.png";
+            String filepath="/root/Music/leavin.mp3";
 
             File file = new File(filepath);
-            int size = (int) file.length();
-            byte[] bytes = new byte[size];
-            try {
+            file = new File(file.getAbsolutePath());
+            File dirAsFile = file.getParentFile();
 
+
+            FileInputStream input = new FileInputStream(dirAsFile);
+            try {
+                int x;
                 out.write(filepath.toString());
                 out.write((char)42);
-                for (int i = 0; i <bytes.length ; i++) {
-                    out.write(bytes[i]);
+                while ((x= input.read())!=-1){
+                    out.write(x);
                 }
                 out.flush();
                 out.close();
                 s.close();
 
             } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-
-
-            //  out.write(outMsg);
-            // out.flush();
-
-            //s.close();
         } catch (UnknownHostException e) {
             e.printStackTrace();
         } catch (IOException e) {

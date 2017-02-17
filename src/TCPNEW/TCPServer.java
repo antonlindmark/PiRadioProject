@@ -17,7 +17,7 @@ public class TCPServer {
     public static void main(String[] args) throws IOException {
         System.out.printf("Server has started \n");
 
-        myServerSocket = new ServerSocket(5000);
+        myServerSocket = new ServerSocket(4444);
 
         while (true) {
             Socket connectionSocket = myServerSocket.accept(); // Waits for client to send request
