@@ -1,6 +1,5 @@
 package anton.tcpclient;
 
-import android.net.Uri;
 import android.os.AsyncTask;
 
 
@@ -28,14 +27,12 @@ public class TCPClient extends AsyncTask{
             Socket s = new Socket(SERVER_IP, SERVER_PORT);
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
 
-            String filepath="/root/Music/leavin.mp3";
 
-            File file = new File(filepath);
-            file = new File(file.getAbsolutePath());
-            File dirAsFile = file.getParentFile();
+            String filepath="urban2.png";
+            final File file = new File(filepath);
+            
 
-
-            FileInputStream input = new FileInputStream(dirAsFile);
+            FileInputStream input = new FileInputStream(file);
             try {
                 int x;
                 out.write(filepath.toString());
