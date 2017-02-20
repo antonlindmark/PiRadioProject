@@ -17,7 +17,7 @@ public class TCPServer {
     public static void main(String[] args) throws IOException {
         System.out.printf("Server has started \n");
 
-        myServerSocket = new ServerSocket(4444);
+        myServerSocket = new ServerSocket(4555);
 
         while (true) {
             Socket connectionSocket = myServerSocket.accept(); // Waits for client to send request
@@ -37,21 +37,8 @@ class newClientThread extends Thread {
 
         try {
             d = new DataInputStream(connection.getInputStream());
-            StringBuilder filepath  =  new StringBuilder();
-            int y;
-            while ( (y = d.read()) !=(char)42) {
-                filepath.append((char)y);
-            }
-            String newString = filepath.toString();
-            String lastString="";
 
-            Pattern p = Pattern.compile(".*\\\\s*(.*)"); // Cuts string after last backslash
-            Matcher m = p.matcher(newString);
-            if (m.find()){
-                System.out.println(m.group(1));
-                lastString=m.group(1);
-            }
-            f = new FileOutputStream(lastString);
+            f = new FileOutputStream("jippppeeey.pdf");
             client = connection;
             this.start();
         } catch (IOException e) {

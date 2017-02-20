@@ -11,7 +11,7 @@ public class TCPClient {
     public static void main(String args[]){
         FileInputStream file=null;
         int x;
-        String filepath = "C:\\Users\\user\\Pictures\\cryptimage.png";
+        String filepath = "C:\\Users\\Anton\\Pictures\\beerpong.jpg";
 
         try {
             file = new FileInputStream(filepath);
@@ -19,7 +19,7 @@ public class TCPClient {
             e.printStackTrace();
         }
         try {
-            Socket s = new Socket("194.47.120.64",7778);
+            Socket s = new Socket("192.168.0.100",4555);
             DataOutputStream d = new DataOutputStream(s.getOutputStream());
             d.write(filepath.getBytes());
             d.write((char)42);
