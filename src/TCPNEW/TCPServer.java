@@ -1,5 +1,8 @@
 package TCPNEW;
 
+import com.sun.xml.internal.ws.api.addressing.WSEndpointReference;
+
+import javax.activation.MimeType;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -36,9 +39,20 @@ class newClientThread extends Thread {
         System.out.println("Connection from "+ connection.getInetAddress() +"accepted on port" +connection.getPort());
 
         try {
+
             d = new DataInputStream(connection.getInputStream());
 
-            f = new FileOutputStream("jippppeeey.pdf");
+            int getMime;
+            String otherString="";
+            while ( (getMime = d.read()) != (char)42) {
+                System.out.println((char)getMime);
+
+                otherString += (char)getMime;
+            }
+
+
+            System.out.println("the type :"+otherString);
+            f = new FileOutputStream("theNewBestFile"+"."+otherString);
             client = connection;
             this.start();
         } catch (IOException e) {
@@ -49,9 +63,13 @@ class newClientThread extends Thread {
         int x;
         try {
             while ( (x = d.read()) > -1) {
+                System.out.println((char)x);
                 f.write(x);
             }
             System.out.println("File is totally recieved!");
+
+            // SHOULDNT PRINT THIS IF CLIENT STOPS CONNECTION
+
         } catch (IOException e) {
             e.printStackTrace();
         }

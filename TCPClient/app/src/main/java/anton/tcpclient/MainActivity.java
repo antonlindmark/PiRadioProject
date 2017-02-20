@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import java.io.FileNotFoundException;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.net.URL;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                // Opens up a filechooser which lets you choose which file you would like to transfer
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("*/*");
                 startActivityForResult(Intent.createChooser(intent, "Open with ..."), RESULT_CODE);
@@ -41,17 +44,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    // When a file has been chosen this method is called
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // When a file has been chosen this method is called
         // Check which request we're responding to
         if (requestCode == RESULT_CODE) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
                 Uri uri;
                 uri = data.getData();
+                String mimeType = getContentResolver().getType(uri);
+                String cuttedMime = mimeType.substring(mimeType.lastIndexOf("/")+1,mimeType.length());
+                System.out.println(cuttedMime); // returns mpeg for mp3 ? ?? ?
+                // Gets the data from the file chosen
 
                 try {
-                    new TCPClient(getContentResolver().openInputStream(uri)).execute();
+                    new TCPClient(getContentResolver().openInputStream(uri),cuttedMime).execute();
+                    // Passing the inputstream across to the TCPClient
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -59,10 +70,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void secondAct(View view){
+        // Jumps to second activity when a certain button is clicked
         Intent intent = new Intent(this, SecondActivity.class);
         startActivity(intent);
     }
     public void thirdAct(View view){
+        // Jumps to third activity when a certain button is clicked
         Intent intent = new Intent(this, ThirdActivity.class);
         startActivity(intent);
     }
