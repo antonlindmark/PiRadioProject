@@ -1,10 +1,15 @@
 package anton.tcpclient;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -13,10 +18,12 @@ import android.widget.ProgressBar;
 public class MainActivity extends AppCompatActivity {
 
 
+    private static final int RESULT_CODE = 1;
     private static int progress;
     private ProgressBar progressBar;
     private int progressStatus = 0;
     private Handler handler = new Handler();
+    public String currentPath="";
     Button progressButton;
 
     @Override
@@ -30,10 +37,29 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("*/*");
+                startActivityForResult(Intent.createChooser(intent, "Open with ..."), RESULT_CODE);
+
                 //  getProgress();
-                new TCPClient().execute();
             }
         });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == RESULT_CODE) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+
+                Uri selectedImage = data.getData();
+
+                currentPath = String.valueOf(selectedImage.getPathSegments());
+                System.out.println(currentPath);
+                new TCPClient(currentPath).execute();
+            }
+        }
     }
 
     public void secondAct(View view){

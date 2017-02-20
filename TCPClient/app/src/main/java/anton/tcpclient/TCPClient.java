@@ -1,5 +1,6 @@
 package anton.tcpclient;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 
 
@@ -18,17 +19,20 @@ import java.net.UnknownHostException;
 
 public class TCPClient extends AsyncTask{
 
-    public static final String SERVER_IP = "192.168.0.103"; //server IP address
+    public static final String SERVER_IP = "192.168.43.27"; //server IP address
     public static final int SERVER_PORT = 4444;
+    public String selectedPath="";
 
+    public TCPClient(String path){
+        selectedPath=path;
+    }
 
     public void runTcpClient() {
         try {
             Socket s = new Socket(SERVER_IP, SERVER_PORT);
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
 
-
-            String filepath="urban2.png";
+            String filepath=selectedPath;
             final File file = new File(filepath);
             
 
