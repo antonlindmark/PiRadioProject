@@ -1,5 +1,7 @@
 package TCPNEW;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -14,7 +16,7 @@ public class TCPServer {
     public static void main(String[] args) throws IOException {
         System.out.printf("Server has started \n");
 
-        myServerSocket = new ServerSocket(4555);
+        myServerSocket = new ServerSocket(4556);
 
         while (true) {
             Socket connectionSocket = myServerSocket.accept(); // Waits for client to send request
@@ -27,6 +29,8 @@ class newClientThread extends Thread {
     DataInputStream d;
     FileOutputStream f;
     Socket client;
+    Boolean transferFailed=false;
+    String pathString;
 
     public newClientThread(Socket connection){
 
@@ -41,8 +45,10 @@ class newClientThread extends Thread {
 
                 otherString += (char)getType;
             }
-            System.out.println("the type :"+otherString);
-            f = new FileOutputStream(otherString);
+
+            pathString = otherString.replaceAll("[^a-zA-Z0-9.]+","");
+            System.out.println("the type :"+pathString);
+            f = new FileOutputStream(pathString);
             client = connection;
             this.start();
         } catch (IOException e) {
@@ -55,10 +61,20 @@ class newClientThread extends Thread {
 
             while ( (x = d.read()) > -1) {
                 f.write(x);
+                System.out.println((char)x);
             }
             d.close();
             f.close();
-            System.out.println("klar");
+
+            if(transferFailed){
+                System.out.println("Transfer error");
+                File deletefile = new File(pathString);
+                deletefile.delete();
+            }
+            else{
+                    System.out.println("File totally recieved");
+            }
+
             // SHOULDNT PRINT THIS IF CLIENT STOPS CONNECTION
 
         } catch (IOException e) {

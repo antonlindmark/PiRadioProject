@@ -19,7 +19,7 @@ import java.net.UnknownHostException;
 public class TCPClient extends AsyncTask{
 
     public static final String SERVER_IP = "192.168.43.27"; //server IP address
-    public static final int SERVER_PORT = 4555;
+    public static final int SERVER_PORT = 4556;
     public InputStream input=null;
     public String fileType="";
 
@@ -44,11 +44,11 @@ public class TCPClient extends AsyncTask{
         try {
             DataOutputStream out = new DataOutputStream(s.getOutputStream());
 
-           // Read until end of file and then writes it to the server
+            // Read until end of file and then writes it to the server
             Intent resultIntent = new Intent();
 
             out.write(fileType.getBytes());
-            out.write((char)42);
+            out.write((char)42); // terminates the path
             while((x= in.read())!=-1){
                 //resultIntent.putExtra("some_key", "String data");
                 //setResult(Activity.RESULT_OK, resultIntent);
