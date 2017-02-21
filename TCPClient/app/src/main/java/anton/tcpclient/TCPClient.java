@@ -1,5 +1,7 @@
 package anton.tcpclient;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.SoundPool;
@@ -16,14 +18,14 @@ import java.net.UnknownHostException;
 
 public class TCPClient extends AsyncTask{
 
-    public static final String SERVER_IP = "192.168.0.100"; //server IP address
+    public static final String SERVER_IP = "192.168.43.27"; //server IP address
     public static final int SERVER_PORT = 4555;
     public InputStream input=null;
-    public String mimeType="";
+    public String fileType="";
 
-    public TCPClient(InputStream in,String mime){
+    public TCPClient(InputStream in,String filet){
         input=in;
-        mimeType=mime;
+        fileType=filet;
     }
 
     public void runTcpClient() {
@@ -43,10 +45,14 @@ public class TCPClient extends AsyncTask{
             DataOutputStream out = new DataOutputStream(s.getOutputStream());
 
            // Read until end of file and then writes it to the server
+            Intent resultIntent = new Intent();
 
-            out.write(mimeType.getBytes());
+            out.write(fileType.getBytes());
             out.write((char)42);
             while((x= in.read())!=-1){
+                //resultIntent.putExtra("some_key", "String data");
+                //setResult(Activity.RESULT_OK, resultIntent);
+                //finish();
                 out.write(x);
             }
             out.close();

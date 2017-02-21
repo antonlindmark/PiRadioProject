@@ -1,14 +1,8 @@
 package TCPNEW;
 
-import com.sun.xml.internal.ws.api.addressing.WSEndpointReference;
-
-import javax.activation.MimeType;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.URLConnection;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by user on 2017-02-13.
@@ -41,18 +35,14 @@ class newClientThread extends Thread {
         try {
 
             d = new DataInputStream(connection.getInputStream());
-
-            int getMime;
+            int getType;
             String otherString="";
-            while ( (getMime = d.read()) != (char)42) {
-                System.out.println((char)getMime);
+            while ( (getType = d.read()) != (char)42) {
 
-                otherString += (char)getMime;
+                otherString += (char)getType;
             }
-
-
             System.out.println("the type :"+otherString);
-            f = new FileOutputStream("theNewBestFile"+"."+otherString);
+            f = new FileOutputStream(otherString);
             client = connection;
             this.start();
         } catch (IOException e) {
@@ -62,18 +52,17 @@ class newClientThread extends Thread {
     public void run(){
         int x;
         try {
+
             while ( (x = d.read()) > -1) {
-                System.out.println((char)x);
                 f.write(x);
             }
-            System.out.println("File is totally recieved!");
-
+            d.close();
+            f.close();
+            System.out.println("klar");
             // SHOULDNT PRINT THIS IF CLIENT STOPS CONNECTION
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }

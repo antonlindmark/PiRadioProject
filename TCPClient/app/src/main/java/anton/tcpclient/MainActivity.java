@@ -1,9 +1,11 @@
 package anton.tcpclient;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Handler;
+import android.provider.OpenableColumns;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("*/*");
                 startActivityForResult(Intent.createChooser(intent, "Open with ..."), RESULT_CODE);
-                //  getProgress();
+                  getProgress();
             }
         });
     }
@@ -55,13 +57,14 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 Uri uri;
                 uri = data.getData();
-                String mimeType = getContentResolver().getType(uri);
-                String cuttedMime = mimeType.substring(mimeType.lastIndexOf("/")+1,mimeType.length());
-                System.out.println(cuttedMime); // returns mpeg for mp3 ? ?? ?
+
+                String filepath = getFileName(uri);
+                System.out.println(filepath);
+
                 // Gets the data from the file chosen
 
                 try {
-                    new TCPClient(getContentResolver().openInputStream(uri),cuttedMime).execute();
+                    new TCPClient(getContentResolver().openInputStream(uri),filepath).execute();
                     // Passing the inputstream across to the TCPClient
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -78,6 +81,30 @@ public class MainActivity extends AppCompatActivity {
         // Jumps to third activity when a certain button is clicked
         Intent intent = new Intent(this, ThirdActivity.class);
         startActivity(intent);
+    }
+
+
+
+    public String getFileName(Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        if (result == null) {
+            result = uri.getPath();
+            int cut = result.lastIndexOf('/');
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
+        }
+        return result;
     }
 
     public void getProgress(){
@@ -108,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             private int doSomeWork() {
                 // Here the sending of files is done or called.
                 try {
-                    // ---simulate doing some work---
+
                     Thread.sleep(50);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
