@@ -19,31 +19,7 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/colorPrimaryDark" />
 
-    <Button
-        android:text="Go to 2nd activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="21dp"
-        android:onClick="secondAct"
-        android:id="@+id/button"
-        android:background="@color/colorPrimary"
-        android:minWidth="200dp"
-        android:layout_above="@+id/button2"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2" />
 
-    <Button
-        android:text="Go to 3rd activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:onClick="thirdAct"
-        android:id="@+id/button2"
-        android:background="@color/colorPrimary"
-        android:minWidth="200dp"
-        android:layout_above="@+id/textView2"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button" />
 
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
@@ -75,5 +51,27 @@
         android:id="@+id/startProgressButton"
         android:background="@color/colorPrimary"
         android:minWidth="200dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="58dp"
+        android:id="@+id/editText"
+        android:hint="Enter IP-Address" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/editText"
+        android:layout_alignRight="@+id/editText"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_marginTop="27dp"
+        android:id="@+id/editText2"
+        android:hint="Enter Port" />
 
 </RelativeLayout>

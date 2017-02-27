@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6741aa64-19f7-48d9-87ee-09e5d443e026" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assignment_1-1.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assignment_2.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Chapter 2_2.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Ezitsuj - Something Wild (Disney Tool).mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Stuck at home" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ezitsuj.mp3" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PiRadioProject/TCPNEW/TCPServer.class" afterPath="$PROJECT_DIR$/out/production/PiRadioProject/TCPNEW/TCPServer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PiRadioProject/TCPNEW/newClientThread.class" afterPath="$PROJECT_DIR$/out/production/PiRadioProject/TCPNEW/newClientThread.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TCPClient/app/src/main/java/anton/tcpclient/SecondActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TCPClient/app/src/main/java/anton/tcpclient/ThirdActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TCPClient/app/src/main/res/layout/activity_second.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TCPClient/app/src/main/res/layout/activity_third.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TCPClient/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/TCPClient/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TCPClient/app/src/main/java/anton/tcpclient/MainActivity.java" afterPath="$PROJECT_DIR$/TCPClient/app/src/main/java/anton/tcpclient/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TCPClient/app/src/main/java/anton/tcpclient/TCPClient.java" afterPath="$PROJECT_DIR$/TCPClient/app/src/main/java/anton/tcpclient/TCPClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TCPClient/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/TCPClient/app/src/main/res/layout/activity_main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TCPNEW/TCPServer.java" afterPath="$PROJECT_DIR$/src/TCPNEW/TCPServer.java" />
     </list>
     <ignored path="PiRadioProject.iws" />
@@ -38,8 +37,8 @@
       <file leaf-file-name="TCPServer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TCPNEW/TCPServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3327869">
-              <caret line="61" column="42" selection-start-line="61" selection-start-column="42" selection-end-line="61" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.97540987">
+              <caret line="77" column="65" selection-start-line="77" selection-start-column="65" selection-end-line="77" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,8 +121,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -156,23 +153,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PiRadioProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PiRadioProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -713,11 +698,13 @@
       <workItem from="1487607773663" duration="3419000" />
       <workItem from="1487623075011" duration="837000" />
       <workItem from="1487628612233" duration="5344000" />
+      <workItem from="1487949522409" duration="104000" />
+      <workItem from="1488201026451" duration="5505000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60406000" />
+    <option name="totallyTimeSpent" value="66044000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -730,10 +717,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41981846" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.123298034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1580938" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1580938" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -771,6 +758,26 @@
     <entry file="file://$PROJECT_DIR$/src/TCPNEW/TCPServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="42" selection-start-line="61" selection-start-column="42" selection-end-line="61" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TCPNEW/TCPServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="42" selection-start-line="61" selection-start-column="42" selection-end-line="61" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TCPNEW/TCPServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -782,11 +789,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="34" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="34" />
-          <folding>
-            <marker date="1487675157321" expanded="false" signature="24:58" placeholder="..." />
-            <marker date="1487675157321" expanded="true" signature="60:101" placeholder="/**...*/" />
-            <marker date="1487675157321" expanded="true" signature="170:876" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -804,11 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="13" selection-start-line="25" selection-start-column="12" selection-end-line="27" selection-end-column="13" />
-          <folding>
-            <marker date="1487675157321" expanded="false" signature="24:58" placeholder="..." />
-            <marker date="1487675157321" expanded="true" signature="60:101" placeholder="/**...*/" />
-            <marker date="1487675157321" expanded="true" signature="170:876" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -826,11 +823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="54" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
-          <folding>
-            <marker date="1487675157321" expanded="false" signature="24:58" placeholder="..." />
-            <marker date="1487675157321" expanded="true" signature="60:101" placeholder="/**...*/" />
-            <marker date="1487675157321" expanded="true" signature="170:876" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -946,18 +938,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20130932">
           <caret line="11" column="34" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="34" />
-          <folding>
-            <marker date="1487675157321" expanded="false" signature="24:58" placeholder="..." />
-            <marker date="1487675157321" expanded="true" signature="60:101" placeholder="/**...*/" />
-            <marker date="1487675157321" expanded="true" signature="170:876" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TCPNEW/TCPServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3327869">
-          <caret line="61" column="42" selection-start-line="61" selection-start-column="42" selection-end-line="61" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.97540987">
+          <caret line="77" column="65" selection-start-line="77" selection-start-column="65" selection-end-line="77" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

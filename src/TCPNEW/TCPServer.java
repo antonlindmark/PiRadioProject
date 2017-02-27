@@ -1,6 +1,5 @@
-package TCPNEW;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+package  TCPNEW;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -16,7 +15,7 @@ public class TCPServer {
     public static void main(String[] args) throws IOException {
         System.out.printf("Server has started \n");
 
-        myServerSocket = new ServerSocket(4556);
+        myServerSocket = new ServerSocket(4555);
 
         while (true) {
             Socket connectionSocket = myServerSocket.accept(); // Waits for client to send request
@@ -48,6 +47,7 @@ class newClientThread extends Thread {
 
             pathString = otherString.replaceAll("[^a-zA-Z0-9.]+","");
             System.out.println("the type :"+pathString);
+            pathString = "music/"+pathString;
             f = new FileOutputStream(pathString);
             client = connection;
             this.start();
@@ -61,7 +61,6 @@ class newClientThread extends Thread {
 
             while ( (x = d.read()) > -1) {
                 f.write(x);
-                System.out.println((char)x);
             }
             d.close();
             f.close();
@@ -72,10 +71,16 @@ class newClientThread extends Thread {
                 deletefile.delete();
             }
             else{
-                    System.out.println("File totally recieved");
-            }
+                System.out.println("File totally recieved");
+                try{
+                    String command = "sudo python PiStation.py -f 89.9 "+ pathString;
 
-            // SHOULDNT PRINT THIS IF CLIENT STOPS CONNECTION
+                    Process p = Runtime.getRuntime().exec(command);
+                    p.waitFor();
+                } catch (IOException | InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

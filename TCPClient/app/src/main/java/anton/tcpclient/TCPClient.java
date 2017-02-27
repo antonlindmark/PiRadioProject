@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.SoundPool;
 import android.os.AsyncTask;
+import android.widget.EditText;
+
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,19 +20,38 @@ import java.net.UnknownHostException;
 
 public class TCPClient extends AsyncTask{
 
-    public static final String SERVER_IP = "192.168.43.27"; //server IP address
-    public static final int SERVER_PORT = 4556;
+    public static final String SERVER_IP = "192.168.43.210"; //server IP address
+    public static final int SERVER_PORT = 4555;
     public InputStream input=null;
     public String fileType="";
+    public String ipAddress;
+    public int portNr;
 
-    public TCPClient(InputStream in,String filet){
+    public TCPClient(InputStream in, String filet, String ip,int port ){
         input=in;
         fileType=filet;
+        ipAddress=ip;
+        portNr=port;
     }
 
     public void runTcpClient() {
+
+
+        int size=0;
         try {
-            Socket s = new Socket(SERVER_IP, SERVER_PORT);
+            size = input.available();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(size);
+
+       // MainActivity a = new MainActivity();
+        //a.getSize(size);
+
+        System.out.println("The ip = "+ipAddress + "the port = "+portNr);
+
+        try {
+            Socket s = new Socket(ipAddress, portNr);
             sendInputStreamToServer(input,s);
 
         } catch (UnknownHostException e) {
