@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Handler;
+import android.os.Message;
 import android.provider.OpenableColumns;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -144,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
             private int doSomeWork() {
+
+
                 // Here the sending of files is done or called.
                 try {
 

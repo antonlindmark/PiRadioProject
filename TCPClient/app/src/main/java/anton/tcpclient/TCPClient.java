@@ -6,6 +6,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.SoundPool;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.EditText;
 
 import java.io.DataOutputStream;
@@ -66,14 +69,15 @@ public class TCPClient extends AsyncTask{
             DataOutputStream out = new DataOutputStream(s.getOutputStream());
 
             // Read until end of file and then writes it to the server
-            Intent resultIntent = new Intent();
+
+
+
 
             out.write(fileType.getBytes());
             out.write((char)42); // terminates the path
             while((x= in.read())!=-1){
-                //resultIntent.putExtra("some_key", "String data");
-                //setResult(Activity.RESULT_OK, resultIntent);
-                //finish();
+                int sendData = in.available();
+                sendToServer(sendData);
                 out.write(x);
             }
             out.close();
@@ -86,7 +90,14 @@ public class TCPClient extends AsyncTask{
     @Override
     protected Object doInBackground(Object[] params) {
         runTcpClient();
+
         return null;
+
+    }
+
+    @Override
+    protected void onProgressUpdate(Object[] values) {
+        super.onProgressUpdate(values);
     }
 }
 
