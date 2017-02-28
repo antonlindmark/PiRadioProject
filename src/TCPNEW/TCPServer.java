@@ -47,7 +47,7 @@ class newClientThread extends Thread {
 
             pathString = otherString.replaceAll("[^a-zA-Z0-9.]+","");
             System.out.println("the type :"+pathString);
-            pathString = "music/"+pathString;
+            //pathString = "music/"+pathString;
             f = new FileOutputStream(pathString);
             client = connection;
             this.start();
@@ -72,14 +72,14 @@ class newClientThread extends Thread {
             }
             else{
                 System.out.println("File totally recieved");
-                try{
+            /*    try{
                     String command = "sudo python PiStation.py -f 89.9 "+ pathString;
 
                     Process p = Runtime.getRuntime().exec(command);
                     p.waitFor();
                 } catch (IOException | InterruptedException e){
                     e.printStackTrace();
-                }
+                }*/
             }
 
         } catch (IOException e) {

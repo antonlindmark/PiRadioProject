@@ -13,25 +13,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.sql.SQLOutput;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int RESULT_CODE = 1;
-    private static int progress;
-    private ProgressBar progressBar;
-    private int progressStatus = 0;
-    private Handler handler = new Handler();
+    public static final int RESULT_CODE = 1;
+
+    public static ProgressBar progressBar;
     Button progressButton;
     EditText mEdit;
     EditText mEdit2;
-   public int fileSizeFromClient;
+    TextView txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +39,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mEdit   = (EditText)findViewById(R.id.editText);
-        mEdit2   = (EditText)findViewById(R.id.editText2);
-        progressButton = (Button)findViewById(R.id.startProgressButton);
+        mEdit = (EditText) findViewById(R.id.editText);
+        mEdit2 = (EditText) findViewById(R.id.editText2);
+        txt = (TextView) findViewById(R.id.textView2);
+        progressBar=(ProgressBar) findViewById(R.id.progressBar);
+        progressButton = (Button) findViewById(R.id.startProgressButton);
+
         progressButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -58,11 +61,11 @@ public class MainActivity extends AppCompatActivity {
     // When a file has been chosen this method is called
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        getProgress();
+
         // When a file has been chosen this method is called
         // Check which request we're responding to
-        String ip =  mEdit.getText().toString();
-        int port =Integer.parseInt(mEdit2.getText().toString());
+        String ip = mEdit.getText().toString();
+        int port = Integer.parseInt(mEdit2.getText().toString());
         if (requestCode == RESULT_CODE) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
@@ -75,16 +78,16 @@ public class MainActivity extends AppCompatActivity {
                 // Gets the data from the file chosen
 
                 try {
-                    new TCPClient(getContentResolver().openInputStream(uri),filepath,ip,port).execute();
+                    new TCPClient(getContentResolver().openInputStream(uri), filepath, ip, port).execute();
                     // Passing the inputstream across to the TCPClient
                 } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-
-
 
     public String getFileName(Uri uri) {
         String result = null;
@@ -107,55 +110,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return result;
     }
-
-
-    public int getValue(int currentCount){
-
-        return currentCount;
-    }
-    public void getSize(int fileSize){
-
-        fileSizeFromClient=fileSize;
-    }
-
-
-    public void getProgress(){
-        final int maxValueProgressBar=600;
-        progress = 0;
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        progressBar.setMax(maxValueProgressBar);
-
-        progressBar.getProgressDrawable().setColorFilter(
-                Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
-
-        new Thread(new Runnable() {
-            public void run() {
-                while (progressStatus < maxValueProgressBar) {
-                    progressStatus = doSomeWork();
-                    handler.post(new Runnable() {
-                        public void run() {
-                            progressBar.setProgress(progressStatus);
-                        }
-                    });
-                }
-                handler.post(new Runnable() {
-                    public void run() {
-                        progressBar.setVisibility(View.VISIBLE);
-                    }
-                });
-            }
-            private int doSomeWork() {
-
-
-                // Here the sending of files is done or called.
-                try {
-
-                    Thread.sleep(50);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return ++progress;
-            }
-        }).start();
-    }
 }
+
