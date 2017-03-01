@@ -74,4 +74,22 @@
         android:id="@+id/editText2"
         android:hint="Enter Port" />
 
+    <ToggleButton
+        android:text="ToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleButton"
+        android:layout_alignTop="@+id/progressBar"
+        android:layout_alignLeft="@+id/startProgressButton"
+        android:layout_alignStart="@+id/startProgressButton" />
+
+    <Button
+        android:text="Next "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_alignTop="@+id/progressBar"
+        android:layout_alignRight="@+id/startProgressButton"
+        android:layout_alignEnd="@+id/startProgressButton" />
+
 </RelativeLayout>
