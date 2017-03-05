@@ -1,5 +1,4 @@
-
-package  TCPNEW;
+package TCPNEW;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -30,6 +29,7 @@ class newClientThread extends Thread {
     Socket client;
     Boolean transferFailed=false;
     String pathString;
+    int maxvalue;
 
     public newClientThread(Socket connection){
 
@@ -38,6 +38,7 @@ class newClientThread extends Thread {
         try {
 
             d = new DataInputStream(connection.getInputStream());
+
             int getType;
             String otherString="";
             while ( (getType = d.read()) != (char)42) {
@@ -47,8 +48,17 @@ class newClientThread extends Thread {
 
             pathString = otherString.replaceAll("[^a-zA-Z0-9.]+","");
             System.out.println("the type :"+pathString);
-            //pathString = "music/"+pathString;
+            pathString = "music/"+pathString;
             f = new FileOutputStream(pathString);
+
+
+            String maxval ="";
+            while ( (getType = d.read()) != (char)42) {
+
+                maxval += (char)getType;
+
+            }
+            maxvalue = Integer.parseInt(maxval);
             client = connection;
             this.start();
         } catch (IOException e) {
@@ -62,6 +72,13 @@ class newClientThread extends Thread {
             while ( (x = d.read()) > -1) {
                 f.write(x);
             }
+
+            File test = new File(pathString);
+            System.out.println("File Length = " + test.length()+ "  Max Value is = "+ maxvalue);
+            if(maxvalue != test.length()){
+                transferFailed = true;
+            }
+
             d.close();
             f.close();
 
@@ -72,15 +89,19 @@ class newClientThread extends Thread {
             }
             else{
                 System.out.println("File totally recieved");
-            /*    try{
-                    String command = "sudo python PiStation.py -f 89.9 "+ pathString;
-
-                    Process p = Runtime.getRuntime().exec(command);
-                    p.waitFor();
-                } catch (IOException | InterruptedException e){
-                    e.printStackTrace();
-                }*/
             }
+
+            // Start random file
+            try{
+                String command = "sudo python PiStation.py -f 89.9 "+pathString;
+                Process p = Runtime.getRuntime().exec(command);
+                p.waitFor();
+            } catch (IOException | InterruptedException e){
+                e.printStackTrace();
+            }
+
+
+            // SHOULDNT PRINT THIS IF CLIENT STOPS CONNECTION
 
         } catch (IOException e) {
             e.printStackTrace();

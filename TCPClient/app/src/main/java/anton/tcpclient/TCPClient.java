@@ -55,15 +55,28 @@ public class TCPClient extends AsyncTask<Integer, Integer, String> {
 
             out.write(fileType.getBytes());
             out.write((char)42); // terminates the path
+
             maxvalue = in.available();
+            String maxval = String.valueOf(maxvalue);
+            System.out.println(maxval);
+            out.write(maxval.getBytes());
+            System.out.println("filsize ? ="+ maxvalue);
+            out.write((char)42);
             publishProgress(maxvalue);
 
             int sendData;
+            int counter=0;
             while((x= in.read())!=-1){
+                counter++;
                 sendData = in.available();
-                publishProgress(maxvalue-sendData);
+                if(counter>50000){
+                    publishProgress(maxvalue-sendData);
+                    counter=0;
+                }
+
                 out.write(x);
             }
+            publishProgress(maxvalue);
             out.close();
             out.flush();
             in.close();

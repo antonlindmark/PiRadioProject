@@ -60,7 +60,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="58dp"
         android:id="@+id/editText"
-        android:hint="Enter IP-Address" />
+        android:hint="Enter IP-Address"
+        android:text="192.168.43.210" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -72,33 +73,36 @@
         android:layout_alignEnd="@+id/editText"
         android:layout_marginTop="27dp"
         android:id="@+id/editText2"
-        android:hint="Enter Port" />
+        android:hint="Enter Port"
+        android:text="4555" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:id="@+id/seekBar"
+        android:minWidth="200dp"
+        android:layout_below="@+id/toggleButton"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
 
     <ToggleButton
         android:text="ToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/toggleButton"
-        android:layout_alignTop="@+id/progressBar"
+        android:layout_below="@+id/progressBar"
         android:layout_alignLeft="@+id/startProgressButton"
-        android:layout_alignStart="@+id/startProgressButton" />
+        android:layout_alignStart="@+id/startProgressButton"
+        android:layout_marginTop="13dp" />
 
     <Button
         android:text="Next "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button"
-        android:layout_alignTop="@+id/progressBar"
+        android:layout_above="@+id/seekBar"
         android:layout_alignRight="@+id/startProgressButton"
         android:layout_alignEnd="@+id/startProgressButton" />
-
-    <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toggleButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:id="@+id/seekBar"
-        android:minWidth="200dp" />
 
 </RelativeLayout>
