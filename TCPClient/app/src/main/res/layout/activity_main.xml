@@ -42,7 +42,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="Start progress"
+        android:text="Send file"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
@@ -76,32 +76,21 @@
         android:hint="Enter Port"
         android:text="4555" />
 
-    <SeekBar
+    <Button
+        android:text="Play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:id="@+id/seekBar"
-        android:minWidth="200dp"
-        android:layout_below="@+id/toggleButton"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
-
-    <ToggleButton
-        android:text="ToggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/toggleButton"
+        android:id="@+id/playnext"
         android:layout_below="@+id/progressBar"
         android:layout_alignLeft="@+id/startProgressButton"
-        android:layout_alignStart="@+id/startProgressButton"
-        android:layout_marginTop="13dp" />
+        android:layout_alignStart="@+id/startProgressButton" />
 
     <Button
-        android:text="Next "
+        android:text="Stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_above="@+id/seekBar"
+        android:id="@+id/stopsong"
+        android:layout_below="@+id/progressBar"
         android:layout_alignRight="@+id/startProgressButton"
         android:layout_alignEnd="@+id/startProgressButton" />
 
