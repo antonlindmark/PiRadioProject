@@ -36,6 +36,8 @@ You could also do this manually in thw terminal to just start the server.
 Step7:
 Now enter the correct port and ip to the raspberry to initialize connection and start to play and transfer songs!
 
+// There is also a TCPClient for Java on PC , though it was used for testing so it should
+not be used now, only if you want to test connection via PC->PC
 // Frequency ranges is set in the Java Server code, now its on 89.9. Be aware of which frequencies your broadcasting on due to regulations.
 // Credit to the C-code Oskar Weigl and Oliver Mattos icrobotix piradio
 
