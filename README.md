@@ -30,8 +30,9 @@ Step5:
 Attach the jumper wire to gpio pin 4. 
 
 Step6: 
-Configure a script to run the commands "cd home/Desktop" + "java TCPServer" (TCPServer should ve the compiled java class)
-You could also do this manually in thw terminal to just start the server. 
+Configure a script to run the commands "cd home/Desktop" + "java TCPServer" (TCPServer should be the compiled java class)
+This script should be run at boot, by starting @lxterminal -e "scriptname"
+You could also do this manually in the terminal to just start the server. 
 
 Step7:
 Now enter the correct port and ip to the raspberry to initialize connection and start to play and transfer songs!
